@@ -1,6 +1,3 @@
-Here's a step-by-step guide on how to approach your incident analysis project, focusing on the conceptual flow and key components, without generating code.
-
----
 
 ### Step-by-Step Approach: AI-Powered Incident Analysis with `pgvector` and Vertex AI
 
@@ -231,6 +228,5 @@ This phase involves creating a service that can receive a user's query, embed it
 2.  **Integrate with a Frontend (Optional):**
     * Develop a simple web UI (e.g., using React, Vue, or plain HTML/JS) that allows users to input their query text and display the semantic search results retrieved from your Vertex AI endpoint.
 
----
 
 This comprehensive plan covers all the major components from data preparation to querying, providing a clear roadmap for setting up your AI-powered incident analysis system. Always refer to Google Cloud's official documentation for specific service configurations, authentication best practices, and security measures.
