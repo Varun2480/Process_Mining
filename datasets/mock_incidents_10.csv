@@ -1,0 +1,11 @@
+id,description,created_at,updated_at,status,priority
+INC-1000,Urgent: Server CPU spike impacts Email Service availability.,2025-01-04 16:33:22.006729,2025-01-05 22:33:22.006729,Open,High
+INC-1001,Urgent: API endpoint timeout impacts Internal Portal availability.,2025-05-05 01:33:22.006729,2025-05-05 08:33:22.006729,Resolved,Low
+INC-1002,Resolved: Database performance degradation after restarting service.,2025-01-30 00:33:22.006729,2025-01-30 09:33:22.006729,Resolved,Low
+INC-1003,Urgent: Storage capacity alert impacts ERP availability.,2024-10-14 22:33:22.006729,2024-10-16 07:33:22.006729,Resolved,Low
+INC-1004,Alert triggered: Network connectivity issue detected on Network-Switch-HQ.,2024-10-25 05:33:22.006729,2024-10-26 15:33:22.006729,Resolved,High
+INC-1005,Troubleshooting Database performance degradation. Root cause unknown.,2025-01-24 06:33:22.006729,2025-01-24 08:33:22.006729,Open,High
+INC-1006,Resolved: Storage capacity alert after checking firewall rules.,2024-06-26 06:33:22.006729,2024-06-26 11:33:22.006729,In Progress,Low
+INC-1007,Investigating Security breach attempt. Affecting Sales users.,2025-03-22 21:33:22.006729,2025-03-23 04:33:22.006729,In Progress,Medium
+INC-1008,Frequent reports of User authentication failure for users in EMEA.,2024-09-25 22:33:22.006729,2024-09-27 05:33:22.006729,Closed,Low
+INC-1009,Frequent reports of Email delivery delay for users in APAC.,2025-02-20 03:33:22.006729,2025-02-21 22:33:22.006729,In Progress,Medium

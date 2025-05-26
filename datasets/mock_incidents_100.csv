@@ -1,0 +1,101 @@
+id,description,created_at,updated_at,status,priority
+INC-1000,Troubleshooting Network connectivity issue. Root cause unknown.,2024-06-12 06:56:43.002475,2024-06-12 14:56:43.002475,Resolved,Medium
+INC-1001,Investigating Network connectivity issue. Affecting IT users.,2025-02-13 22:56:43.002475,2025-02-15 02:56:43.002475,Open,Medium
+INC-1002,Urgent: API endpoint timeout impacts ERP availability.,2024-11-26 12:56:43.002475,2024-11-27 18:56:43.002475,Closed,Low
+INC-1003,Investigating Server CPU spike. Affecting HR users.,2024-08-18 15:56:43.002475,2024-08-19 07:56:43.002475,Open,Medium
+INC-1004,Urgent: Printer not responding impacts ERP availability.,2025-03-17 04:56:43.002475,2025-03-17 22:56:43.002475,Open,High
+INC-1005,Alert triggered: API endpoint timeout detected on Web-Server-02.,2025-04-08 12:56:43.002475,2025-04-10 04:56:43.002475,Closed,Low
+INC-1006,Urgent: Email delivery delay impacts Internal Portal availability.,2025-03-09 01:56:43.002475,2025-03-10 16:56:43.002475,Closed,Low
+INC-1007,Resolved: Network connectivity issue after clearing cache.,2024-11-30 08:56:43.002475,2024-12-02 08:56:43.002475,Resolved,Low
+INC-1008,Alert triggered: User authentication failure detected on Network-Switch-HQ.,2025-01-27 06:56:43.002475,2025-01-27 16:56:43.002475,Resolved,Low
+INC-1009,Urgent: Storage capacity alert impacts ERP availability.,2025-02-16 21:56:43.002475,2025-02-17 02:56:43.002475,Resolved,High
+INC-1010,Troubleshooting Server CPU spike. Root cause unknown.,2024-09-11 02:56:43.002475,2024-09-12 13:56:43.002475,Closed,Medium
+INC-1011,Resolved: Storage capacity alert after checking firewall rules.,2025-03-04 15:56:43.002475,2025-03-05 23:56:43.002475,Closed,Low
+INC-1012,Urgent: Server CPU spike impacts ERP availability.,2024-07-11 00:56:43.002475,2024-07-11 22:56:43.002475,In Progress,Medium
+INC-1013,Troubleshooting Printer not responding. Root cause unknown.,2024-06-05 09:56:43.003475,2024-06-06 05:56:43.003475,In Progress,Medium
+INC-1014,Alert triggered: User authentication failure detected on Auth-Service.,2025-02-17 07:56:43.003475,2025-02-17 10:56:43.003475,In Progress,Low
+INC-1015,Troubleshooting Application crash on login. Root cause unknown.,2025-03-03 21:56:43.003475,2025-03-04 20:56:43.003475,In Progress,High
+INC-1016,Troubleshooting Application crash on login. Root cause unknown.,2024-10-23 10:56:43.003475,2024-10-25 05:56:43.003475,Closed,High
+INC-1017,Troubleshooting Server CPU spike. Root cause unknown.,2024-10-19 00:56:43.003475,2024-10-20 08:56:43.003475,Closed,Low
+INC-1018,Troubleshooting User authentication failure. Root cause unknown.,2024-06-20 16:56:43.003475,2024-06-22 04:56:43.003475,Open,Medium
+INC-1019,Frequent reports of Storage capacity alert for users in AMER.,2025-04-10 13:56:43.003475,2025-04-11 04:56:43.003475,In Progress,High
+INC-1020,Frequent reports of Security breach attempt for users in EMEA.,2024-06-12 11:56:43.003475,2024-06-12 14:56:43.003475,Open,Low
+INC-1021,Troubleshooting Security breach attempt. Root cause unknown.,2024-08-13 20:56:43.003475,2024-08-15 16:56:43.003475,Resolved,Medium
+INC-1022,Resolved: Printer not responding after checking firewall rules.,2024-11-12 20:56:43.003475,2024-11-13 02:56:43.003475,Resolved,Medium
+INC-1023,Frequent reports of API endpoint timeout for users in EMEA.,2025-03-14 05:56:43.003475,2025-03-16 05:56:43.003475,In Progress,Medium
+INC-1024,Resolved: Application crash on login after applying patch.,2025-04-17 05:56:43.003475,2025-04-19 00:56:43.003475,Closed,High
+INC-1025,Troubleshooting Server CPU spike. Root cause unknown.,2024-08-04 12:56:43.003475,2024-08-06 12:56:43.003475,In Progress,Medium
+INC-1026,Alert triggered: Server CPU spike detected on Prod-DB-01.,2025-02-16 08:56:43.003475,2025-02-18 06:56:43.003475,In Progress,Medium
+INC-1027,Troubleshooting Database performance degradation. Root cause unknown.,2024-07-23 06:56:43.003475,2024-07-24 08:56:43.003475,Closed,High
+INC-1028,Frequent reports of Security breach attempt for users in EMEA.,2024-11-06 19:56:43.003475,2024-11-08 15:56:43.003475,Open,Medium
+INC-1029,Resolved: Application crash on login after restarting service.,2024-07-17 20:56:43.003475,2024-07-18 04:56:43.003475,In Progress,High
+INC-1030,Investigating Application crash on login. Affecting IT users.,2024-08-10 15:56:43.003475,2024-08-12 04:56:43.003475,Resolved,High
+INC-1031,Investigating Storage capacity alert. Affecting Sales users.,2025-01-13 17:56:43.003475,2025-01-14 21:56:43.003475,Closed,Medium
+INC-1032,Troubleshooting Application crash on login. Root cause unknown.,2024-07-21 14:56:43.003475,2024-07-22 17:56:43.003475,In Progress,High
+INC-1033,Troubleshooting Database performance degradation. Root cause unknown.,2024-06-09 21:56:43.003475,2024-06-11 14:56:43.003475,Resolved,Low
+INC-1034,Alert triggered: Application crash on login detected on Prod-DB-01.,2024-08-20 10:56:43.003475,2024-08-21 19:56:43.003475,In Progress,Low
+INC-1035,Investigating Database performance degradation. Affecting IT users.,2025-04-28 12:56:43.003475,2025-04-30 05:56:43.003475,Resolved,High
+INC-1036,Frequent reports of Email delivery delay for users in AMER.,2024-12-13 02:56:43.003475,2024-12-13 09:56:43.003475,Closed,Medium
+INC-1037,Resolved: User authentication failure after checking firewall rules.,2025-05-11 04:56:43.003475,2025-05-12 09:56:43.003475,Open,Low
+INC-1038,Alert triggered: Server CPU spike detected on Prod-DB-01.,2025-03-05 19:56:43.003475,2025-03-07 13:56:43.003475,Closed,High
+INC-1039,Investigating API endpoint timeout. Affecting Sales users.,2025-04-22 11:56:43.003475,2025-04-23 15:56:43.003475,In Progress,Medium
+INC-1040,Investigating Email delivery delay. Affecting Sales users.,2024-07-29 13:56:43.003475,2024-07-30 15:56:43.003475,In Progress,Low
+INC-1041,Urgent: Server CPU spike impacts CRM availability.,2024-11-05 10:56:43.003475,2024-11-05 18:56:43.003475,Resolved,Low
+INC-1042,Urgent: Application crash on login impacts CRM availability.,2025-01-11 09:56:43.003475,2025-01-12 03:56:43.003475,In Progress,Low
+INC-1043,Frequent reports of Email delivery delay for users in EMEA.,2025-01-24 23:56:43.003475,2025-01-25 22:56:43.003475,Closed,High
+INC-1044,Urgent: Server CPU spike impacts Email Service availability.,2024-09-05 08:56:43.003475,2024-09-05 22:56:43.003475,In Progress,Low
+INC-1045,Troubleshooting Security breach attempt. Root cause unknown.,2024-08-19 11:56:43.003475,2024-08-21 08:56:43.003475,Open,High
+INC-1046,Investigating User authentication failure. Affecting Finance users.,2024-07-07 05:56:43.003475,2024-07-07 19:56:43.003475,Open,Medium
+INC-1047,Troubleshooting API endpoint timeout. Root cause unknown.,2025-03-13 06:56:43.003475,2025-03-14 08:56:43.003475,Closed,Medium
+INC-1048,Urgent: Network connectivity issue impacts CRM availability.,2025-03-15 19:56:43.003475,2025-03-17 16:56:43.003475,In Progress,Low
+INC-1049,Alert triggered: Server CPU spike detected on Network-Switch-HQ.,2025-03-28 13:56:43.003475,2025-03-28 22:56:43.003475,Open,High
+INC-1050,Frequent reports of Database performance degradation for users in APAC.,2024-06-05 05:56:43.003475,2024-06-05 13:56:43.003475,Resolved,Low
+INC-1051,Frequent reports of Application crash on login for users in Global.,2024-07-16 04:56:43.003475,2024-07-16 21:56:43.003475,Resolved,High
+INC-1052,Urgent: Database performance degradation impacts ERP availability.,2024-08-13 07:56:43.003475,2024-08-14 15:56:43.003475,In Progress,High
+INC-1053,Alert triggered: Database performance degradation detected on Prod-DB-01.,2025-04-22 04:56:43.003475,2025-04-23 17:56:43.003475,Open,High
+INC-1054,Frequent reports of Storage capacity alert for users in APAC.,2025-01-16 09:56:43.003475,2025-01-17 06:56:43.003475,Open,Low
+INC-1055,Frequent reports of Database performance degradation for users in Global.,2024-10-15 18:56:43.003475,2024-10-17 12:56:43.003475,Closed,High
+INC-1056,Investigating Storage capacity alert. Affecting Sales users.,2024-06-14 05:56:43.003475,2024-06-15 05:56:43.003475,Closed,Low
+INC-1057,Investigating API endpoint timeout. Affecting Marketing users.,2024-09-05 01:56:43.003475,2024-09-06 14:56:43.003475,Resolved,High
+INC-1058,Investigating Database performance degradation. Affecting Finance users.,2024-10-14 13:56:43.003475,2024-10-15 15:56:43.003475,In Progress,Medium
+INC-1059,Frequent reports of API endpoint timeout for users in AMER.,2024-10-23 15:56:43.003475,2024-10-23 19:56:43.003475,Resolved,Low
+INC-1060,Alert triggered: Server CPU spike detected on Auth-Service.,2025-05-22 04:56:43.003475,2025-05-22 16:56:43.003475,Open,Medium
+INC-1061,Alert triggered: Email delivery delay detected on Network-Switch-HQ.,2024-10-01 12:56:43.004470,2024-10-02 11:56:43.004470,In Progress,Medium
+INC-1062,Alert triggered: Server CPU spike detected on Auth-Service.,2025-01-12 11:56:43.004470,2025-01-14 10:56:43.004470,Closed,High
+INC-1063,Troubleshooting Storage capacity alert. Root cause unknown.,2024-11-19 08:56:43.004470,2024-11-19 15:56:43.004470,Resolved,Low
+INC-1064,Investigating User authentication failure. Affecting Finance users.,2025-05-11 14:56:43.004470,2025-05-11 19:56:43.004470,Open,Low
+INC-1065,Resolved: Printer not responding after checking firewall rules.,2025-04-01 03:56:43.004470,2025-04-02 18:56:43.004470,In Progress,Medium
+INC-1066,Urgent: Email delivery delay impacts CRM availability.,2025-04-04 21:56:43.004470,2025-04-06 10:56:43.004470,Closed,Medium
+INC-1067,Frequent reports of Security breach attempt for users in EMEA.,2025-01-07 00:56:43.004470,2025-01-08 18:56:43.004470,In Progress,Medium
+INC-1068,Resolved: Server CPU spike after scaling up resources.,2025-04-02 18:56:43.004470,2025-04-03 14:56:43.004470,Open,Medium
+INC-1069,Urgent: Storage capacity alert impacts Internal Portal availability.,2025-05-17 18:56:43.004470,2025-05-19 00:56:43.004470,In Progress,Medium
+INC-1070,Frequent reports of Security breach attempt for users in EMEA.,2024-08-18 19:56:43.004470,2024-08-20 18:56:43.004470,Open,Medium
+INC-1071,Urgent: API endpoint timeout impacts Internal Portal availability.,2025-03-13 15:56:43.004470,2025-03-14 18:56:43.004470,Resolved,Medium
+INC-1072,Urgent: Storage capacity alert impacts CRM availability.,2025-04-26 07:56:43.004470,2025-04-26 21:56:43.004470,In Progress,High
+INC-1073,Troubleshooting Server CPU spike. Root cause unknown.,2024-07-09 03:56:43.004470,2024-07-09 13:56:43.004470,Open,Low
+INC-1074,Urgent: Printer not responding impacts Email Service availability.,2025-04-27 01:56:43.004470,2025-04-28 19:56:43.004470,In Progress,Low
+INC-1075,Troubleshooting Printer not responding. Root cause unknown.,2024-10-24 14:56:43.004470,2024-10-25 02:56:43.004470,In Progress,High
+INC-1076,Frequent reports of Security breach attempt for users in APAC.,2024-07-10 23:56:43.004470,2024-07-11 03:56:43.004470,Resolved,Low
+INC-1077,Resolved: API endpoint timeout after applying patch.,2024-11-17 00:56:43.004470,2024-11-17 22:56:43.004470,Closed,High
+INC-1078,Resolved: Application crash on login after applying patch.,2025-02-23 20:56:43.004470,2025-02-24 11:56:43.004470,Open,Medium
+INC-1079,Resolved: API endpoint timeout after restarting service.,2025-05-11 04:56:43.004470,2025-05-11 16:56:43.004470,Closed,Low
+INC-1080,Alert triggered: Network connectivity issue detected on Web-Server-02.,2024-08-19 02:56:43.004470,2024-08-20 18:56:43.004470,Open,High
+INC-1081,Frequent reports of API endpoint timeout for users in APAC.,2024-06-15 07:56:43.004470,2024-06-17 00:56:43.004470,Resolved,Medium
+INC-1082,Urgent: User authentication failure impacts Email Service availability.,2025-03-23 16:56:43.004470,2025-03-24 20:56:43.004470,Open,Medium
+INC-1083,Investigating API endpoint timeout. Affecting Marketing users.,2024-10-28 00:56:43.004470,2024-10-28 04:56:43.004470,In Progress,Medium
+INC-1084,Investigating User authentication failure. Affecting Finance users.,2025-04-03 18:56:43.004470,2025-04-04 18:56:43.004470,Resolved,Low
+INC-1085,Resolved: User authentication failure after restarting service.,2025-05-18 11:56:43.004470,2025-05-19 11:56:43.004470,Resolved,Medium
+INC-1086,Frequent reports of Server CPU spike for users in Global.,2025-05-14 02:56:43.004470,2025-05-15 09:56:43.004470,In Progress,Medium
+INC-1087,Troubleshooting User authentication failure. Root cause unknown.,2024-11-11 18:56:43.004470,2024-11-12 20:56:43.004470,In Progress,Low
+INC-1088,Investigating Server CPU spike. Affecting Finance users.,2024-11-28 17:56:43.004470,2024-11-29 06:56:43.004470,Open,High
+INC-1089,Investigating User authentication failure. Affecting HR users.,2025-03-02 11:56:43.004470,2025-03-03 20:56:43.004470,Closed,High
+INC-1090,Alert triggered: API endpoint timeout detected on Web-Server-02.,2025-02-13 00:56:43.004470,2025-02-14 00:56:43.004470,Resolved,High
+INC-1091,Frequent reports of Storage capacity alert for users in EMEA.,2024-07-10 15:56:43.004470,2024-07-10 17:56:43.004470,Closed,Low
+INC-1092,Investigating Network connectivity issue. Affecting IT users.,2025-03-05 03:56:43.004470,2025-03-05 20:56:43.004470,In Progress,Low
+INC-1093,Troubleshooting Database performance degradation. Root cause unknown.,2024-08-01 21:56:43.004470,2024-08-02 15:56:43.004470,Open,Medium
+INC-1094,Resolved: Printer not responding after scaling up resources.,2025-03-13 16:56:43.004470,2025-03-14 19:56:43.004470,Open,Medium
+INC-1095,Alert triggered: Storage capacity alert detected on Network-Switch-HQ.,2025-05-10 17:56:43.004470,2025-05-12 09:56:43.004470,Open,Medium
+INC-1096,Troubleshooting User authentication failure. Root cause unknown.,2025-03-27 16:56:43.004470,2025-03-28 15:56:43.004470,Open,Medium
+INC-1097,Investigating Security breach attempt. Affecting Sales users.,2024-11-30 02:56:43.004470,2024-11-30 15:56:43.004470,Open,Medium
+INC-1098,Urgent: Database performance degradation impacts CRM availability.,2024-06-24 05:56:43.004470,2024-06-25 19:56:43.004470,Closed,Low
+INC-1099,Urgent: Server CPU spike impacts Internal Portal availability.,2024-05-30 03:56:43.004470,2024-05-30 09:56:43.004470,Open,High

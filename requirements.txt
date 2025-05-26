@@ -1,0 +1,9 @@
+google-cloud-aiplatform
+numpy
+pandas
+scikit-learn
+psycopg2
+psycopg2-binary
+pgvector==0.1.6
+dotenv
+matplotlib
