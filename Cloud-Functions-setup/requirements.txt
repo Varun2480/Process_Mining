@@ -1,0 +1,7 @@
+fastapi
+uvicorn # Although not directly run, it's a common dependency for fastapi apps
+psycopg2-binary
+pgvector
+google-cloud-aiplatform[generative]==1.52.0
+pandas # If still using for any internal data manipulation, otherwise can remove
+numpy # If numpy types are directly encountered, otherwise can remove
