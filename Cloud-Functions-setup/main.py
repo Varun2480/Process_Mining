@@ -34,7 +34,7 @@ GEMINI_MODEL_NAME = os.environ.get('GEMINI_MODEL_NAME', "gemini-2.0-flash")
 # Global instances for warm starts
 embedding_model_instance = None
 generative_model_instance = None
-_db_conn_pool = None 
+_db_single_conn = None 
 
 # --- FastAPI App Initialization ---
 app = FastAPI(
@@ -82,23 +82,41 @@ def get_generative_model(tools_to_register=None):
     return generative_model_instance
 
 def get_db_connection():
-    global _db_conn_pool
-    if _db_conn_pool is None:
+    global _db_single_conn
+    
+    # Check if connection exists and is still open. If not, create a new one.
+    if _db_single_conn is None or _db_single_conn.closed:
         try:
+            print(f"Attempting to establish NEW DB connection: Host={DB_HOST}, DB={DB_NAME}, User={DB_USER}, Port={DB_PORT}")
             conn = psycopg2.connect(
                 host=DB_HOST,
                 database=DB_NAME,
                 user=DB_USER,
                 password=DB_PASSWORD,
-                port=DB_PORT
+                port=DB_PORT,
+                connect_timeout=10 # Added timeout for robustness
             )
-            register_vector(conn)
-            print("Database connection established and pgvector type registered.")
-            _db_conn_pool = conn
+            register_vector(conn) # Register vector type for this new connection
+            print("New database connection established and pgvector type registered.")
+            _db_single_conn = conn # Store this new connection globally
         except Exception as e:
             print(f"Failed to connect to database: {e}")
-            raise RuntimeError("Could not connect to database.") from e
-    return _db_conn_pool
+            raise RuntimeError("Could not establish a database connection.") from e
+    else:
+        # If connection already exists and is open, ensure vector type is registered (redundant but safe)
+        try:
+            register_vector(_db_single_conn) # Re-register for existing connection
+            print("Reusing existing database connection and re-registered pgvector type.")
+        except Exception as e:
+            # This case implies something went wrong with the existing connection
+            print(f"Failed to re-register pgvector for existing connection: {e}")
+            # Consider closing _db_single_conn and forcing a new connection on next call
+            if _db_single_conn:
+                _db_single_conn.close()
+                _db_single_conn = None
+            raise RuntimeError("Issue with existing database connection.") from e
+
+    return _db_single_conn
 
 def get_gecko_embedding(texts: str | list[str]) -> list[float] | list[list[float]]:
     model = get_embedding_model()
@@ -124,10 +142,21 @@ def get_gecko_embedding(texts: str | list[str]) -> list[float] | list[list[float
 def fetch_similar_incidents_from_db(query_text: str) -> list[dict]:
     print(f"Tool call: Fetching similar incidents for query: '{query_text}'")
     query_embedding_values = get_gecko_embedding(query_text)
+
     if not query_embedding_values:
         print("Failed to generate embedding for the query. Returning empty results.")
         return []
-    conn = get_db_connection()
+
+    # --- DEBUGGING PRINTS ---
+    print(f"DEBUG: Type of query_embedding_values BEFORE DB query: {type(query_embedding_values)}")
+    if isinstance(query_embedding_values, list):
+        print(f"DEBUG: Length of query_embedding_values: {len(query_embedding_values)}")
+        if query_embedding_values: # Check if list is not empty before accessing elements
+            print(f"DEBUG: Type of first element in list: {type(query_embedding_values[0])}")
+            print(f"DEBUG: Sample query_embedding_values (first 5 elements): {query_embedding_values[:min(5, len(query_embedding_values))]}")
+    # --- END DEBUGGING PRINTS ---
+
+    conn = get_db_connection() # This will ensure pgvector is registered for 'conn'
     cur = conn.cursor()
     query_sql = """
     SELECT 
@@ -136,7 +165,7 @@ def fetch_similar_incidents_from_db(query_text: str) -> list[dict]:
     FROM 
         incidents
     ORDER BY 
-        embedding <-> %s
+        embedding <-> %s::vector
     LIMIT 5;
     """
     try:
@@ -144,7 +173,9 @@ def fetch_similar_incidents_from_db(query_text: str) -> list[dict]:
         results = cur.fetchall()
         incident_results = []
         for row in results:
+            # Safely handle cluster_id conversion
             cluster_id_value = int(row[2]) if isinstance(row[2], (int, np.integer)) else row[2]
+            
             incident_results.append({
                 "id": row[0],
                 "description": row[1],
@@ -159,6 +190,7 @@ def fetch_similar_incidents_from_db(query_text: str) -> list[dict]:
         return incident_results
     except Exception as e:
         print(f"Database query failed during tool execution: {e}")
+        # Return a more descriptive error if possible from your app
         return [{"error": f"Database query failed: {str(e)}", "details": str(e)}]
     finally:
         cur.close()

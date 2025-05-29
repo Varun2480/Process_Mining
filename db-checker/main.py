@@ -2,11 +2,11 @@ import os
 import psycopg2
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
-from dotenv import load_dotenv # For local testing
+# from dotenv import load_dotenv # For local testing
 
 # Load environment variables from .env file for LOCAL testing only
 # Cloud Run will inject these via --set-env-vars
-load_dotenv()
+# load_dotenv()
 
 # --- Configuration (from Environment Variables) ---
 # These should be passed correctly by Cloud Run deployment
