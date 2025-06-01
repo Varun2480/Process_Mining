@@ -1,6 +1,7 @@
 
 ### Step-by-Step Approach: AI-Powered Incident Analysis with `pgvector` and Vertex AI
 
+
 **Goal:** To embed 100 incident descriptions, cluster them using K-means, store them in `pgvector`, and then query this store using Vertex AI for similarity search.
 
 **Key Components:**
@@ -10,6 +11,11 @@
 * **Google Cloud Storage (Optional but recommended):** For storing raw data or larger documents linked to incidents.
 
 ---
+
+![Archirtecture Diagram](Process_Mining\Images\architecture.png)
+
+---
+
 
 #### Phase 1: Data Preparation & GCP Project Setup
 
