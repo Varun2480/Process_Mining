@@ -11,8 +11,9 @@
 * **Google Cloud Storage (Optional but recommended):** For storing raw data or larger documents linked to incidents.
 
 ---
+**Architecture**
 
-![Archirtecture Diagram](Process_Mining\Images\architecture.png)
+![image](./Images/architecture.png "Architecture Diagram")
 
 ---
 
