@@ -1,0 +1,5 @@
+gcloud functions deploy process-video-workflow --runtime python311 --trigger-http --entry-point process_video_for_workflow --region us-central1 --memory 1GB --timeout 540s --set-env-vars GCP_PROJECT_ID="poetic-analog-460707-i9" --set-env-vars GCP_LOCATION="us-central1" --allow-unauthenticated
+
+
+curl -X POST "https://us-central1-poetic-analog-460707-i9.cloudfunctions.net/process-video-workflow" -H "Content-Type: application/json" -d "{\"video_gcs_uri\": \"gs://process-mining-bucket-1/How to Buy On Amazon (really easy).mp4\"}"
+

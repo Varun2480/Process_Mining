@@ -1,0 +1,485 @@
+{
+  "name": "video-stages",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-poetic-analog-460707-i9.cloudfunctions.net/process-video-workflow",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "video_gcs_uri",
+              "value": "={{ $('Upload Video').item.json.URL }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        820,
+        -210
+      ],
+      "id": "e9f3b393-bbe4-4c51-815d-90692ef0b40e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "40f10007-6309-46e1-9662-1d9db5bee855",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        600,
+        -110
+      ],
+      "id": "7e246d8b-6d31-4bb9-aae3-ef3532c83a10",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        820,
+        -10
+      ],
+      "id": "33923bf3-a4de-4538-bb50-743718685c72",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "content": "**What this code does:**\n\n* It looks at the video input URL provided.\n* It checks if the web address starts with \"gs://.\n* Then, it tells you \"TRUE\" or \"FALSE\" for each URL's validation.",
+        "height": 340,
+        "width": 300,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -290
+      ],
+      "id": "4939f6f9-72aa-4b5d-afff-dacfe6ca2802",
+      "name": "Sticky Note",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "formTitle": "Provide GSUTIL URL",
+        "formDescription": "Provide the GSUTIL URL of the video file stored in Google Cloud Bucket.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "URL",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        -110
+      ],
+      "id": "1fb764c6-c56d-4478-8f3d-42094d5ea9e6",
+      "name": "Upload Video",
+      "webhookId": "3c3cf522-c2be-468d-a51a-83d9bb2119ab"
+    },
+    {
+      "parameters": {
+        "content": "---\n### **Video Process Analysis (Cloud Function)**\n\nThis is a **Google Cloud Function** that automatically analyzes videos. It uses advanced **AI** to break down complex processes into easy-to-understand stages and steps.\n\n* **Cloud Function:** It's an automated program running in Google Cloud. Just give it a video link, and it gets to work.\n* **AI Power (Vertex AI):** It uses **Gemini 2.0 Flash**, a powerful AI model from Google's Vertex AI platform, to \"watch\" and understand the video's content.\n* **Video Input:** You provide the function with a link to your video (typically stored in Google Cloud Storage).\n* **Process Breakdown:** The AI identifies the main **stages** of the activity and lists all the individual **steps** within each stage, then provides this analysis in a structured format.\n\n---",
+        "height": 400,
+        "width": 520
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        660,
+        -620
+      ],
+      "id": "94f28a5b-12cf-4cda-acee-178deebce190",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst cleanedItems = items.map((item) => {\n  let jsonString = item?.json?.data;\n  jsonString = jsonString.replace(/json|\\\\n|```/g, \"\");\n  try {\n    const parsedJson = JSON.parse(jsonString);\n    return { json: parsedJson };\n  } catch (error) {\n    console.log(\"Error parsing JSON string:\", error);\n    return null;\n  }\n});\nreturn cleanedItems.filter((item) => item !== null);\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        -210
+      ],
+      "id": "eb89e1af-c3b8-4c84-b2ee-1f0d55c46436",
+      "name": "Structured Output JSON Parser"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst result = items.map((item) => {\n  return { result: item?.json?.URL.startsWith(\"gs://\") };\n});\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        380,
+        -110
+      ],
+      "id": "6a0f3121-a6d0-4af1-a380-02ea8cee4411",
+      "name": "Validate URL"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert in process visualization and Mermaid.js syntax. Your task is to convert the provided JSON process analysis into a Mermaid.js flowchart.\n\nInstructions:\nAnalyze the JSON: Carefully read the stages and steps within each stage.\nGenerate a Flowchart: Create a Mermaid.js flowchart using graph TD (top-down) for clear sequential flow.\nRepresent Stages as Nodes:\nEach stage should have a short, simple, alphanumeric ID (e.g., S1, S2, S3).\nThe visible label for each node must be enclosed in square brackets and double quotes, allowing for multi-line content (e.g., NodeID[\"Visible Name<br>Key Step 1<br>Key Step 2\"]).\nRepresent Flow with Arrows: Use --> to show the sequential flow from one node to the next.\nInclude Key Steps in Node Descriptions: For clarity, include the stage_name on the first line, followed by the first 1-2 key steps from each stage's steps list on subsequent lines within the node's label. Use <br> for line breaks within the quoted node label.\nStart and End Nodes: Add a clear \"Start\" and \"End\" node to delineate the process boundaries. These should also follow the NodeID[\"Label\"] format (e.g., Start[\"Start\"]).\nOutput Format: Provide only the Mermaid.js code block, enclosed in markdown code fences (```mermaid ... ```). Do not include any additional text or explanations outside of the Mermaid code block.\n\nJSON is : {{$json.stages.map(stage => `${stage.stage_name}:\\n  - ${stage.steps.slice(0, 2).join('\\n  - ')}${stage.steps.length > 2 ? '\\n  ...' : ''}`).join('\\n\\n') }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        -60
+      ],
+      "id": "14011a89-dbfb-481b-b341-51ab74de3e95",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        160
+      ],
+      "id": "4498b48c-92b9-447e-80ef-9af2ae35dc54",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "GorwJGCGkb7dRRUk",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst cleanedItems = items.map((item) => {\n  let output = item?.json?.output;\n  output = output.replace(/```/g, \"\");\n  output = output.replace(/mermaid/g, \"\");\n  return { ...item.json, output };\n});\nreturn cleanedItems;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        -60
+      ],
+      "id": "80f60d60-ea60-4766-9a8d-b07912749714",
+      "name": "Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "showText",
+        "responseText": "={{ $json.output }}"
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        -60
+      ],
+      "id": "a9f511cd-1b58-4939-a183-abda6c78cf23",
+      "name": "Display Mermaid JS Code",
+      "webhookId": "80fce2a2-b8c9-4e70-907b-98ebb623fd1c"
+    },
+    {
+      "parameters": {
+        "content": "## Mermaid code Generation\n\n* For the generated stages from the cloud function, the LLM here converts the data to mermaid JS code.\n* Next it parses the output into a clean code.\n* It then display the Mermaid code on a display page.",
+        "height": 540,
+        "width": 560,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        -240
+      ],
+      "id": "33fa398c-72c6-4b24-b841-01b050a7657d",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst formattedOutput = items.map(item => {\n    // --- Adjust this line based on your actual input JSON path ---\n    // Example for Scenario A: If your JSON is directly in item.json\n    const fullProcessData = item.json; \n\n    // Example for Scenario B: If your JSON is in item.json.myProcessData\n    // const fullProcessData = item.json.myProcessData; \n\n    // Example if your full JSON is an array (like the one you pasted)\n    // and the main process object is the first element\n    // const fullProcessData = item.json; // Assuming the array is directly in item.json\n    // const processData = fullProcessData[0]; // Then access the first element\n    // Replace 'fullProcessData' with 'processData' in the rest of the code.\n\n\n    if (!fullProcessData || fullProcessData.length === 0) { // Check if fullProcessData is valid\n        return { json: { formattedStagesMarkdown: \"Error: Input data is empty or invalid.\" } };\n    }\n\n    // This line assumes fullProcessData is an array and your main process object is the first element.\n    // If fullProcessData is *already* the main process object, remove '[0]'\n    const processData = Array.isArray(fullProcessData) ? fullProcessData[0] : fullProcessData; \n\n    if (!processData || !Array.isArray(processData.stages)) {\n        return { json: { formattedStagesMarkdown: \"Error: 'stages' array not found in process data or processData is not an object.\" } };\n    }\n\n    let markdownOutput = `# Process: ${processData.process_title || 'Untitled Process'}\\n\\n`;\n    markdownOutput += \"## Stages and Steps Overview\\n\\n\";\n\n    processData.stages.forEach(stage => {\n        markdownOutput += `### ${stage.stage_number}. **${stage.stage_name}**\\n`;\n        if (stage.stage_description) {\n            markdownOutput += `*Description*: ${stage.stage_description}\\n`;\n        }\n        if (Array.isArray(stage.steps) && stage.steps.length > 0) {\n            stage.steps.forEach(step => {\n                markdownOutput += `* ${step}\\n`;\n            });\n        } else {\n            markdownOutput += \"*No steps listed for this stage.*\\n\";\n        }\n        markdownOutput += \"\\n\"; \n    });\n\n    if (processData.completeness_check) {\n        markdownOutput += `---\\n## Completeness Check\\n${processData.completeness_check}\\n`;\n    }\n\n    item.json.formattedStagesMarkdown = markdownOutput;\n\n    return item;\n});\n\nreturn formattedOutput;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        -560
+      ],
+      "id": "d4c95ef4-2900-44df-b259-20bd7ee9f9cd",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "958f91b1-57b7-4aea-8405-879a920bf4cb",
+              "name": "formattedStagesMarkdown",
+              "value": "={{ $json.formattedStagesMarkdown }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1620,
+        -560
+      ],
+      "id": "324b73bf-ae79-49c5-924f-83fb3701a550",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "mode": "markdownToHtml",
+        "markdown": "={{ $json.formattedStagesMarkdown }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -560
+      ],
+      "id": "72d5fb60-fc1c-4635-b56e-24e261d83dc9",
+      "name": "Markdown"
+    },
+    {
+      "parameters": {
+        "content": "## Markdown Code Generation\n\n* For the generated stages from the cloud function, the code here converts the json into a markdown code.\n* Then convert the markdown into html to display stages on screen.",
+        "height": 300,
+        "width": 760,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        -700
+      ],
+      "id": "6fa530fc-17f4-4724-8c36-036f641a2ca7",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "showText",
+        "responseText": "={{ $json.data }}"
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        -560
+      ],
+      "id": "add13c3f-7ea6-4db3-9aee-04253c412f8b",
+      "name": "Display Markdown Code",
+      "webhookId": "916ad398-9c86-4590-b7c4-c52fb8e545f6"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload Video": {
+      "main": [
+        [
+          {
+            "node": "Validate URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Structured Output JSON Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate URL": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output JSON Parser": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Output Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Output Parser": {
+      "main": [
+        [
+          {
+            "node": "Display Mermaid JS Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Display Mermaid JS Code": {
+      "main": [
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "Display Markdown Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Display Markdown Code": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d012ba69-15c4-408f-8b6d-3affe16d0480",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d7b1feaa152eb6bb786a0d2a31193522e5ad47a872d93b26721e3fef6e00977e"
+  },
+  "id": "vUJCUfGpdbuznn9a",
+  "tags": []
+}
